@@ -13,6 +13,7 @@ public class Cloud : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
         transform.localScale = new Vector3(Random.Range(minSize, maxSize), Random.Range(minSize, maxSize), 1);
+        //Test git
     }
 
     void Update()
