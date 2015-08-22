@@ -227,6 +227,14 @@ Prefab:
       propertyPath: chunkMaxPopulation
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 11484172, guid: b26aced5755d2c946b87f7ca589d87af, type: 2}
+      propertyPath: maxDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484172, guid: b26aced5755d2c946b87f7ca589d87af, type: 2}
+      propertyPath: minDistance
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b26aced5755d2c946b87f7ca589d87af, type: 2}
   m_IsPrefabParent: 0
@@ -337,6 +345,7 @@ MonoBehaviour:
   chunkSize: 10
   chunkMinPopulation: 7
   chunkMaxPopulation: 7
+  minDistance: 3
   cloud: {fileID: 450474, guid: cdc5f39ebe17b8743aeab50b6e697a62, type: 2}
   trackObject: {fileID: 1131274554}
 --- !u!4 &1118984458

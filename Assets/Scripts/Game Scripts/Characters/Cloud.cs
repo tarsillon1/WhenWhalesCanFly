@@ -6,6 +6,8 @@ public class Cloud : MonoBehaviour
     private bool check;
     private ChunkHandler handler;
     private Chunk chunk;
+    private float minDistance;
+
     public float maxSize;
     public float minSize;
 
@@ -13,7 +15,6 @@ public class Cloud : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0);
         transform.localScale = new Vector3(Random.Range(minSize, maxSize), Random.Range(minSize, maxSize), 1);
-        //Test git
     }
 
     void Update()
@@ -26,13 +27,17 @@ public class Cloud : MonoBehaviour
             bool unFixed = false;
             foreach (GameObject c in chunk.Objects)
             {
-                if (GetComponent<Collider2D>().bounds.Intersects(c.GetComponent<Collider2D>().bounds) && c != gameObject)
-                    GetComponent<RandomSpawn>().setSpawn(chunk.ChunkRect);
+                    if ((GetComponent<Collider2D>().bounds.Intersects(c.GetComponent<Collider2D>().bounds)
+                        || Vector2.Distance(transform.position, c.transform.position) < minDistance)
+                        && c != gameObject)
+                        GetComponent<RandomSpawn>().setSpawn(chunk.ChunkRect);
             }
 
             foreach (GameObject c in chunk.Objects)
             {
-                if (GetComponent<Collider2D>().bounds.Intersects(c.GetComponent<Collider2D>().bounds) && c != gameObject)
+                if ((GetComponent<Collider2D>().bounds.Intersects(c.GetComponent<Collider2D>().bounds)
+                    || Vector2.Distance(transform.position, c.transform.position) < minDistance)
+                    && c != gameObject)
                     unFixed = true;
             }
             if (!unFixed)
@@ -55,6 +60,19 @@ public class Cloud : MonoBehaviour
         set
         {
             handler = value;
+        }
+    }
+
+    public float MinDistance
+    {
+        get
+        {
+            return minDistance;
+        }
+
+        set
+        {
+            minDistance = value;
         }
     }
 }

@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ChunkHandler{
+public class ChunkHandler
+{
     private List<Chunk> chunks = new List<Chunk>();
     private int chunkSize;
 
@@ -21,10 +22,10 @@ public class ChunkHandler{
 
     public void destoryChunksDirection(string direction, Vector2 position)
     {
-        if(direction == "left")
+        if (direction == "left")
         {
             int maxX = (Mathf.FloorToInt(position.x / chunkSize) * chunkSize) - chunkSize;
-            foreach(Chunk chunk in getNonRenderChunks(position))
+            foreach (Chunk chunk in getNonRenderChunks(position))
             {
                 if (chunk.ChunkRect.position.x < maxX)
                     destroyChunk(chunk);
@@ -74,7 +75,7 @@ public class ChunkHandler{
     List<Chunk> getNonRenderChunks(Vector2 position)
     {
         List<Chunk> nonRenderChunks = new List<Chunk>(chunks);
-        foreach(Chunk chunk in getRenderChunks(position))
+        foreach (Chunk chunk in getRenderChunks(position))
         {
             nonRenderChunks.Remove(chunk);
         }
@@ -84,7 +85,7 @@ public class ChunkHandler{
     public List<Chunk> getEmptyChunks()
     {
         List<Chunk> emptyChunks = new List<Chunk>();
-        foreach(Chunk chunk in chunks)
+        foreach (Chunk chunk in chunks)
         {
             if (chunk.Objects.Count == 0)
                 emptyChunks.Add(chunk);
@@ -107,9 +108,27 @@ public class ChunkHandler{
         return renderChunks;
     }
 
+    public Chunk getPreRenderChunk(string direction, Vector2 position)
+    {
+        Chunk preRenderChunk = null;
+        if (direction == "left")
+            preRenderChunk = getChunk(new Vector2(position.x - (chunkSize * 2), position.y));
+
+        if (direction == "right")
+            preRenderChunk = getChunk(new Vector2(position.x + (chunkSize * 2), position.y));
+
+        if (direction == "up")
+            preRenderChunk = getChunk(new Vector2(position.x, position.y + (chunkSize * 2)));
+
+        if (direction == "down")
+            preRenderChunk = getChunk(new Vector2(position.x, position.y - (chunkSize * 2)));
+
+        return preRenderChunk;
+    }
+
     public Chunk getChunk(Vector2 position)
     {
-        foreach(Chunk chunk in chunks)
+        foreach (Chunk chunk in chunks)
         {
             if (chunk.ChunkRect.Contains(position))
             {
