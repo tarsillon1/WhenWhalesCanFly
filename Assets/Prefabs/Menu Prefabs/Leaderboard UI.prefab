@@ -299,6 +299,7 @@ GameObject:
   - 114: {fileID: 11463766}
   - 225: {fileID: 22564520}
   - 114: {fileID: 11480578}
+  - 114: {fileID: 11483462}
   m_Layer: 5
   m_Name: Leaderboard UI
   m_TagString: Untagged
@@ -2450,6 +2451,18 @@ MonoBehaviour:
   - {fileID: 22414140}
   - {fileID: 22416404}
   - {fileID: 22445916}
+  dataBase: {fileID: 11483462}
+--- !u!114 &11483462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc8f4f00c97ba240a4e3297b1406cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11483494
 MonoBehaviour:
   m_ObjectHideFlags: 1

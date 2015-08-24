@@ -13,7 +13,7 @@ public class Whale : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
             grounded = true;
-        if(cloud != col.gameObject && GetComponent<Rigidbody2D>().velocity.y < 0)
+        if(cloud != col.gameObject)
         {
             cloud = col.gameObject;
             GetComponent<Rigidbody2D>().isKinematic = true;

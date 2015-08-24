@@ -55,11 +55,10 @@ public class DatabaseClient : MonoBehaviour{
 			);
 		yield return www;
 		try{
-            if (!www.text.Contains("error"))
-            {
-                highscore = int.Parse(JsonConvert.DeserializeObject<String>(www.text));
-                Debug.Log("Highscore:" + highscore);
-            }
+		if (!www.text.Contains ("error")) {
+			highscore = JsonConvert.DeserializeObject<int> (www.text);
+			Debug.Log("Highscore:" + highscore);
+		}
 		}catch(JsonReaderException e){
 			Debug.Log(e.StackTrace);
 		}

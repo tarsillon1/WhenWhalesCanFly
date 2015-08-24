@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour {
 	public Transform[] colum = new Transform[10];
-	private DatabaseClient dataBase;
+	public DatabaseClient dataBase;
 	private LeaderBoard[] leaderInfo = new LeaderBoard[10];
 	private int page = 1;
 	private int placeholder = 1;
@@ -25,7 +25,6 @@ public class Leaderboard : MonoBehaviour {
 	void Start () {
 		for (int i = 0; i < 10; i++) 
 			leaderInfo[i] = new LeaderBoard();
-        dataBase = GameObject.FindGameObjectWithTag("Database").GetComponent<DatabaseClient>();
 		loadPage ();
 	}
 
@@ -51,7 +50,7 @@ public class Leaderboard : MonoBehaviour {
 		}
 		leaderInfo = dataBase.leaderboard;
 		for (int i = 0; i < 10; i++) {
-			if (leaderInfo != null && leaderInfo[i].entrytime != ""){
+			if (leaderInfo != null && leaderInfo[i] != null){
 				colum [i].GetChild (0).GetComponent<Text> ().text = leaderInfo [i].entrytime;
 				colum [i].GetChild (1).GetComponent<Text> ().text = leaderInfo [i].score.ToString ();
 				colum [i].GetChild (2).GetComponent<Text> ().text = leaderInfo [i].username;
