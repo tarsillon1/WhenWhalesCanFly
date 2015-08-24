@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Scenery
   - Damager
+  - Database
   layers:
   - Default
   - TransparentFX
