@@ -2,19 +2,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using System.Xml;
-using System.Xml.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft;
-using JsonDotNet;
 
 public class DatabaseClient : MonoBehaviour{
 	private string adress = "192.168.1.14:8080";
 	public int highscore{ get; set; }
 	public string username{ get; set; }
-	public LeaderBoard[] leaderboard{ get; set; }
+	public List<LeaderBoard> leaderboard{ get; set; }
 
 	void Start(){
 		StartCoroutine (getUsername ());
@@ -91,7 +85,7 @@ public class DatabaseClient : MonoBehaviour{
 			
 			Debug.Log("Waiting for leaderboard definitions\n");
 			if(!www.text.Contains("error")){
-				leaderboard = JsonConvert.DeserializeObject<LeaderBoard[]> (www.text);
+				leaderboard = JsonConvert.DeserializeObject<List<LeaderBoard>> (www.text);
 				Debug.Log(www.text);
 			}
 	}

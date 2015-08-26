@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Hat
-  - Bomb
-  - Bullet
-  - Enemy
-  - Scenery
-  - Damager
+  - Item
+  - Dangerous
+  - Smelly
+  - Fire
+  - Whale
+  - Water Fountain
+  - Settings
   layers:
   - Default
   - TransparentFX
@@ -19,13 +20,13 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Enemy
-  - Bullet (Player)
-  - Bullet (Enemy)
-  - DestoyArea
-  - Scenery
-  - Columns
+  - Menu Items
+  - Environment
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -48,20 +49,14 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
-    uniqueID: 1959699241
-    locked: 0
-  - name: Midground
-    uniqueID: 2737215443
+    uniqueID: 1093696345
     locked: 0
   - name: Foreground
-    uniqueID: 404910065
+    uniqueID: 1859086223
     locked: 0
-  - name: Sparks
-    uniqueID: 1369744519
+  - name: Characters
+    uniqueID: 3940858523
     locked: 0
-  - name: Bullet
-    uniqueID: 3567414253
-    locked: 0
-  - name: Player
-    uniqueID: 926194697
+  - name: UI
+    uniqueID: 771169021
     locked: 0

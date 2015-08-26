@@ -16,54 +16,71 @@ public class PressAndDrag : MonoBehaviour {
 
     void Start()
     {
-        greenLine.material = new Material(Shader.Find("Particles/Additive"));
+        greenLine.material = new Material(Shader.Find("UI/Default"));
         greenLine.SetWidth(.2f, .2f);
-        redLine.material = new Material(Shader.Find("Particles/Additive"));
+        redLine.material = new Material(Shader.Find("UI/Default"));
         redLine.SetWidth(.2f, .2f);
+        greenLine.sortingOrder = 10;
+        redLine.sortingOrder = 10;
     }
 
 	void Update () {
-        if (startPosition != Vector3.zero)
+        if (rigidBody != null)
         {
-            startPosition += Camera.main.transform.position - cameraPos;
-            currentPosition += Camera.main.transform.position - cameraPos;
-        }
-        cameraPos = Camera.main.transform.position;
+            if (startPosition != Vector3.zero)
+            {
+                startPosition += Camera.main.transform.position - cameraPos;
+                currentPosition += Camera.main.transform.position - cameraPos;
+            }
+            cameraPos = Camera.main.transform.position;
 
-        if (Input.touchCount > 0)
+            if (Input.touchCount > 0)
+            {
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    startPosition = Input.GetTouch(0).position;
+                    startPosition = Camera.main.ScreenToWorldPoint(startPosition);
+                }
+                if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                {
+                    currentPosition = Input.GetTouch(0).position;
+                    currentPosition = Camera.main.ScreenToWorldPoint(currentPosition);
+                }
+                if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                {
+                    applyForce();
+                    startPosition = Vector3.zero;
+                    currentPosition = Vector3.zero;
+                }
+            }
+
+            if (currentPosition != Vector3.zero)
+            {
+                greenLine.SetPosition(0, new Vector3(startPosition.x, startPosition.y, 90f));
+                greenLine.SetPosition(1, new Vector3(currentPosition.x, currentPosition.y, 90f));
+                redLine.SetPosition(0, new Vector3(startPosition.x, startPosition.y, 90f));
+                redLine.SetPosition(1, new Vector3(currentPosition.x, currentPosition.y, 90f));
+                angle = startPosition - currentPosition;
+                angle.Normalize();
+                setLineColor();
+            }
+            else
+            {
+                greenLine.SetPosition(0, Vector3.zero);
+                greenLine.SetPosition(1, Vector3.zero);
+                redLine.SetPosition(0, Vector3.zero);
+                redLine.SetPosition(1, Vector3.zero);
+                angle = Vector2.zero;
+            }
+        }
+        else
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                startPosition = Input.GetTouch(0).position;
-				startPosition = Camera.main.ScreenToWorldPoint(startPosition);
-            }
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
-            {
-                currentPosition = Input.GetTouch(0).position;
-				currentPosition = Camera.main.ScreenToWorldPoint(currentPosition);
-            }
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                applyForce();
-                startPosition = Vector3.zero;
-                currentPosition = Vector3.zero;
-            }
-        }
-
-        if (currentPosition != Vector3.zero) {
-            greenLine.SetPosition (0, new Vector3(startPosition.x, startPosition.y, 90f));
-            greenLine.SetPosition (1, new Vector3(currentPosition.x, currentPosition.y, 90f));
-            redLine.SetPosition(0, new Vector3(startPosition.x, startPosition.y, 90f));
-            redLine.SetPosition(1, new Vector3(currentPosition.x, currentPosition.y, 90f));
-            angle = startPosition - currentPosition;
-            angle.Normalize();
-            setLineColor();
-        } else {
-			greenLine.SetPosition (0, Vector3.zero);
-			greenLine.SetPosition (1, Vector3.zero);
+            greenLine.SetPosition(0, Vector3.zero);
+            greenLine.SetPosition(1, Vector3.zero);
             redLine.SetPosition(0, Vector3.zero);
             redLine.SetPosition(1, Vector3.zero);
-            angle = Vector2.zero;
+            startPosition = Vector3.zero;
+            currentPosition = Vector3.zero;
         }
     }
 

@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.IO;
 
 public class HighscoreScreen : MonoBehaviour {
 	private float distance;
@@ -16,6 +14,7 @@ public class HighscoreScreen : MonoBehaviour {
 	void Start () {
 		GetComponent<CanvasGroup> ().alpha = 0f;
 		this.GetComponent<Canvas> ().worldCamera = Camera.main;
+        dataBase = GameObject.FindGameObjectWithTag("Database").GetComponent<DatabaseClient>();
 	}
 	
 

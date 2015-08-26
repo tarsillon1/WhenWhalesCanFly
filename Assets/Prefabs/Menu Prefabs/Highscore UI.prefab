@@ -65,7 +65,6 @@ GameObject:
   - 114: {fileID: 11467180}
   - 114: {fileID: 11452234}
   - 225: {fileID: 22535140}
-  - 114: {fileID: 11445686}
   - 114: {fileID: 11440148}
   m_Layer: 5
   m_Name: Highscore UI
@@ -201,18 +200,7 @@ MonoBehaviour:
   usernameUI: {fileID: 22435370, guid: 73ed4d9a7bf289e4384431c60bf7ec78, type: 2}
   normalScoreUI: {fileID: 22449262, guid: 0d333a66f29313c419c399bd485cb77e, type: 2}
   newHighscoreUI: {fileID: 22403430, guid: 0c4562776c6932546a66794d5e82b7be, type: 2}
-  dataBase: {fileID: 11445686}
---- !u!114 &11445686
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc8f4f00c97ba240a4e3297b1406cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  delayTime: 2
 --- !u!114 &11447160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,7 +414,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
 --- !u!224 &22410540
 RectTransform:
   m_ObjectHideFlags: 1
@@ -537,6 +525,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IgnoreParentGroups
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: x
+      value: 4.6500001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: delayTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Wave
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

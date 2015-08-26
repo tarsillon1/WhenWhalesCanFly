@@ -5,6 +5,10 @@ using System.Collections.Generic;
 public class ChunkHandler
 {
     private List<Chunk> chunks = new List<Chunk>();
+    private bool autoDestroyLeft;
+    private bool autoDestroyRight;
+    private bool autoDestroyUp;
+    private bool autoDestroyDown;
     private int chunkSize;
 
     public ChunkHandler(int size)
@@ -136,5 +140,57 @@ public class ChunkHandler
             }
         }
         return createNewChunk(position);
+    }
+
+    public bool AutoDestroyLeft
+    {
+        get
+        {
+            return autoDestroyLeft;
+        }
+
+        set
+        {
+            autoDestroyLeft = value;
+        }
+    }
+
+    public bool AutoDestroyRight
+    {
+        get
+        {
+            return autoDestroyRight;
+        }
+
+        set
+        {
+            autoDestroyRight = value;
+        }
+    }
+
+    public bool AutoDestroyUp
+    {
+        get
+        {
+            return autoDestroyUp;
+        }
+
+        set
+        {
+            autoDestroyUp = value;
+        }
+    }
+
+    public bool AutoDestroyDown
+    {
+        get
+        {
+            return autoDestroyDown;
+        }
+
+        set
+        {
+            autoDestroyDown = value;
+        }
     }
 }
